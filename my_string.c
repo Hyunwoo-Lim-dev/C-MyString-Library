@@ -32,3 +32,25 @@ char* my_strncpy(char* destination, const char* source, int num) {
     }
     return destination;
 }
+
+char* my_strncat(char* destination, const char* source, int num) {
+    int dest_len = my_strlen(destination);
+    int i = 0;
+    while (i < num && source[i] != '\0') {
+        destination[dest_len + i] = source[i];
+        i++;
+    }
+    destination[dest_len + i] = '\0';
+    return destination;
+}
+
+int my_strncmp(const char* str1, const char* str2, int num) {
+    int i = 0;
+    while (i < num) {
+        if (str1[i] != str2[i] || str1[i] == '\0' || str2[i] == '\0') {
+            return str1[i] - str2[i];
+        }
+        i++;
+    }
+    return 0;
+}
