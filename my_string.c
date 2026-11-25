@@ -54,3 +54,32 @@ int my_strncmp(const char* str1, const char* str2, int num) {
     }
     return 0;
 }
+
+char* my_strchr(const char* str, int character) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == (char)character) {
+            return (char*)&str[i];
+        }
+        i++;
+    }
+    if ((char)character == '\0') {
+        return (char*)&str[i];
+    }
+    return NULL;
+}
+
+char* my_strrchr(const char* str, int character) {
+    char* last_found = NULL;
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == (char)character) {
+            last_found = (char*)&str[i];
+        }
+        i++;
+    }
+    if ((char)character == '\0') {
+        return (char*)&str[i];
+    }
+    return last_found;
+}
