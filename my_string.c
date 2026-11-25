@@ -19,3 +19,16 @@ int my_strcmp(const char* str1, const char* str2) {
     }
     return str1[i] - str2[i];
 }
+
+char* my_strncpy(char* destination, const char* source, int num) {
+    int i = 0;
+    while (i < num && source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    while (i < num) {
+        destination[i] = '\0';
+        i++;
+    }
+    return destination;
+}
