@@ -83,3 +83,38 @@ char* my_strrchr(const char* str, int character) {
     }
     return last_found;
 }
+
+char* my_strstr(const char* str1, const char* str2) {
+    if (str2[0] == '\0') {
+        return (char*)str1;
+    }
+    for (int i = 0; str1[i] != '\0'; i++) {
+        int j = 0;
+        while (str1[i + j] != '\0' && str2[j] != '\0' && str1[i + j] == str2[j]) {
+            j++;
+        }
+        if (str2[j] == '\0') {
+            return (char*)&str1[i];
+        }
+    }
+    return NULL;
+}
+
+int my_strspn(const char* str1, const char* str2) {
+    int count = 0;
+    for (int i = 0; str1[i] != '\0'; i++) {
+        int found = 0;
+        for (int j = 0; str2[j] != '\0'; j++) {
+            if (str1[i] == str2[j]) {
+                found = 1;
+                break;
+            }
+        }
+        if (found == 1) {
+            count++;
+        } else {
+            break;
+        }
+    }
+    return count;
+}
