@@ -18,3 +18,16 @@ C언어 표준 라이브러리(string.h)의 핵심 문자열 처리 함수 10종
 
   3. 관련 연구 (표준 <string.h> 분석 및 구현 범위 설정)
 표준 <string.h> 헤더는 크게 복사(Copy), 병합(Concatenation), 비교(Comparison), 탐색(Search), 길이/메모리 제어 기능으로 구성됩니다. 본 프로젝트에서는 단순 전체 복사(strcpy)보다 버퍼 크기 제한과 포인터 위치 탐색이 요구되어 구현 난이도가 높은 8개 함수를 기본 대상으로 선정하고, 가산점 기준을 충족하기 위해 기초 함수 2종을 추가하여 총 10개 함수를 설계했습니다.
+
+기본 구현 대상 (난이도 중/상 8종):my_strncpy, my_strncat, my_strncmp, my_strchr, my_strrchr, my_strstr, my_strspn, my_strcspn
+추가 구현 대상 (기초 2종):my_strlen, my_strcmp
+
+  4. 프로그램의 설계
+
+4.1 파일 모듈화 구조
+선언부, 구현부, 검증부를 분리하여 실제 C 라이브러리와 동일한 구조로 설계했습니다.
+C-MyString-Library/
+my_string.h    10개 함수 원형 선언 및 중복 포함 방지 헤더 가드(#ifndef)
+my_string.c    배열 인덱스 및 포인터 연산 기반 10개 함수 구현부
+main.c         표준 <string.h>와 my_string.h의 출력 결과 1:1 비교 검증 코드
+README.md      프로젝트 보고서 (선정 이유, 설계, 구현, 결과 분석 및 참고문헌)
